@@ -1,87 +1,139 @@
-# House Price Predictor (Linear Regression)
+# 🏠 House Price Prediction with Linear Regression
 
-This project demonstrates the fundamentals of **single-variable linear regression** using Python and scikit-learn.  
-The goal is to understand how a simple machine learning model learns the relationship between **house area** and **price**, and how it can be used to make predictions on new data.
+This project explores **linear regression** as a machine learning technique for predicting house prices, starting with a **single-variable model** and extending to a **multiple-variable model**.
 
----
-
-## Project Overview
-
-- **Input (Feature):** House area (square feet)
-- **Output (Target):** House price (USD)
-- **Model:** Linear Regression
-- **Dataset:** Synthetic CSV created for learning purposes
-
-This project intentionally uses a **clean, simple dataset** to focus on core ML concepts before moving on to real-world, noisy data.
+The goal is to understand **how feature selection impacts model performance**, and why incorporating multiple features leads to more accurate and reliable predictions.
 
 ---
 
-## What This Project Covers
+## 📌 Project Overview
 
-- Loading CSV data with pandas
-- Visualizing data using scatter plots
-- Training a linear regression model
-- Interpreting slope and intercept
-- Making predictions for new inputs
-- Exporting predictions to a CSV file
+Two models are implemented and compared:
 
----
+### 1️⃣ Single-Variable Linear Regression
 
-## Example Visualization
+* **Feature:** House area (square feet)
+* **Target:** House price (USD)
+* **Purpose:** Establish a baseline model and understand core ML concepts
 
-The model learns a linear relationship between area and price:
+### 2️⃣ Multiple-Variable Linear Regression
 
-- Red points: actual data
-- Blue line: fitted regression line
+* **Features:**
 
-This helps visualize how the model approximates the trend in the data.
-
----
-
-## Making Predictions
-
-The trained model is applied to new area values from areas.csv, and predictions are saved to prediction.csv:
-
-```python
-predictions = reg.predict(new_data)
-```
-This simulates how a trained ML model can be reused on unseen data.
-
-
-## Model Training
-
-The model is trained using scikit-learn:
-
-```python
-from sklearn.linear_model import LinearRegression
-
-reg = LinearRegression()
-reg.fit(df[['area']], df['price'])
-```
----
-
-## Notes & Limitations
-
-- This is a learning-focused project, not a production-ready price predictor.
-- Real house prices depend on many features (location, bedrooms, amenities, etc.).
-- Single-variable linear regression is used here as a foundational step.
+  * Area
+  * Number of bedrooms
+  * Number of bathrooms
+  * Number of stories
+  * Parking availability
+* **Purpose:** Improve prediction accuracy by capturing more real-world factors that influence house prices
 
 ---
 
-## Technologies Used
-- Python
-- pandas
-- numpy
-- matplotlib
-- scikit-learn
+## 🔍 Why This Comparison Matters
+
+Real-world data is rarely explained by a single variable.
+
+By comparing both models, this project demonstrates:
+
+* How **single-feature models underfit complex problems**
+* How **adding relevant features increases explanatory power**
+* How evaluation metrics like **R² and MSE** help compare models objectively
 
 ---
 
-## Credits
-Built with 💻 and ☕ by @marcanjoul
+## 📊 Visual Comparison
+
+### Single-Variable Model
+
+![alt text](image.png)
+* Shows a weak-to-moderate linear relationship
+
+### Multiple-Variable Model
+
+* Uses multiple numerical features
+* Produces predictions closer to actual prices
+* Displays reduced error and higher R² score
+
+📸 *(Screenshots of both regression plots and residual plots can be added here for visual comparison.)*
 
 ---
 
-## Want to improve or collaborate?
+## 🧠 Model Evaluation
 
-Open an issue, drop a PR, or fork it and make it your own. I'd appreciate any feedback!
+Both models are evaluated using:
+
+* **Mean Squared Error (MSE)**
+  Measures the average squared difference between predicted and actual prices
+
+* **R² Score**
+  Indicates how much variance in house prices is explained by the model
+
+### Key Findings
+
+* The **single-variable model** explains a limited portion of price variance
+* The **multiple-variable model** achieves:
+
+  * Higher R² score
+  * Lower MSE
+  * Better generalization to unseen data
+
+This confirms that **house prices are influenced by multiple factors**, not just size.
+
+---
+
+## 📁 Predictions Output
+
+For both models:
+
+* Predictions are generated on test data
+* Results are exported to CSV files containing:
+
+  * Input features
+  * Actual prices
+  * Predicted prices
+
+This simulates how trained ML models are reused on unseen data in practice.
+
+---
+
+## 🧪 What This Project Covers
+
+* Loading and inspecting CSV data with pandas
+* Feature selection and data preparation
+* Train/test splitting
+* Training linear regression models with scikit-learn
+* Interpreting coefficients for feature importance
+* Model evaluation using MSE and R²
+* Residual analysis to assess model assumptions
+* Exporting predictions for external use
+
+---
+
+## ⚠️ Notes & Limitations
+
+* This is an **educational project**, not a production-grade pricing model
+* Important real-world features such as:
+
+  * Location
+  * Property condition
+  * Neighborhood factors
+    are not included
+* Linear regression assumes linear relationships and constant variance
+
+---
+
+## 🚀 Technologies Used
+
+* Python
+* pandas
+* numpy
+* matplotlib
+* scikit-learn
+
+---
+
+## 🙌 Credits
+
+Built with 💻 and ☕ by **@marcanjoul**
+
+---
